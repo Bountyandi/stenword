@@ -28,6 +28,53 @@ declare global {
 import '@ionic/core';
 import 'ionicons';
 
+import {
+  NoteProps,
+} from './components/list-notes/list-notes';
+import {
+  NoteProps as NoteProps2,
+} from './components/list-notes/list-notes';
+
+declare global {
+
+  namespace StencilComponents {
+    interface AddNoteForm {
+      'addNote': (note: NoteProps) => void;
+      'body': string;
+      'name': string;
+      'section': string;
+      'tags': string[];
+    }
+  }
+
+  interface HTMLAddNoteFormElement extends StencilComponents.AddNoteForm, HTMLStencilElement {}
+
+  var HTMLAddNoteFormElement: {
+    prototype: HTMLAddNoteFormElement;
+    new (): HTMLAddNoteFormElement;
+  };
+  interface HTMLElementTagNameMap {
+    'add-note-form': HTMLAddNoteFormElement;
+  }
+  interface ElementTagNameMap {
+    'add-note-form': HTMLAddNoteFormElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'add-note-form': JSXElements.AddNoteFormAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AddNoteFormAttributes extends HTMLAttributes {
+      'addNote'?: (note: NoteProps) => void;
+      'body'?: string;
+      'name'?: string;
+      'section'?: string;
+      'tags'?: string[];
+    }
+  }
+}
+
 
 declare global {
 
@@ -65,31 +112,31 @@ declare global {
 declare global {
 
   namespace StencilComponents {
-    interface AppProfile {
-      'name': string;
+    interface ListNotes {
+      'notes': NoteProps[];
     }
   }
 
-  interface HTMLAppProfileElement extends StencilComponents.AppProfile, HTMLStencilElement {}
+  interface HTMLListNotesElement extends StencilComponents.ListNotes, HTMLStencilElement {}
 
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
+  var HTMLListNotesElement: {
+    prototype: HTMLListNotesElement;
+    new (): HTMLListNotesElement;
   };
   interface HTMLElementTagNameMap {
-    'app-profile': HTMLAppProfileElement;
+    'list-notes': HTMLListNotesElement;
   }
   interface ElementTagNameMap {
-    'app-profile': HTMLAppProfileElement;
+    'list-notes': HTMLListNotesElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      'app-profile': JSXElements.AppProfileAttributes;
+      'list-notes': JSXElements.ListNotesAttributes;
     }
   }
   namespace JSXElements {
-    export interface AppProfileAttributes extends HTMLAttributes {
-      'name'?: string;
+    export interface ListNotesAttributes extends HTMLAttributes {
+      'notes'?: NoteProps[];
     }
   }
 }
